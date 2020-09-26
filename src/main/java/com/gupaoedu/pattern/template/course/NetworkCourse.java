@@ -1,8 +1,8 @@
 package com.gupaoedu.pattern.template.course;
 
-public abstract class NetworkCourse {
+public interface NetworkCourse {
 
-    protected final void createCourse() {
+     default void createCourse() {
         //1、发布预习资料
         this.postPreResource();
 
@@ -25,30 +25,30 @@ public abstract class NetworkCourse {
         }
     }
 
-    abstract void checkHomework();
+    void checkHomework();
 
     //钩子方法：实现流程微调，子类可以自定义
-    protected boolean needHomework(){
+    default boolean needHomework(){
         return false;
     }
 
-    final void postSource() {
+    default void postSource() {
         System.out.println("提交源代码");
     }
 
-    private void postNote() {
+    default void postNote() {
         System.out.println("提交课件、笔记");
     }
 
-    final void liveVideo() {
+    default void liveVideo() {
         System.out.println("直播授课");
     }
 
-    final void createPPT() {
+    default void createPPT() {
         System.out.println("创建备课ppt");
     }
 
-    final void postPreResource() {
+    default void postPreResource() {
         System.out.println("发布预习资料");
     }
 }

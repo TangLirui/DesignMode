@@ -1,11 +1,11 @@
 package com.gupaoedu.pattern.template.course;
 
-public class BigDataCourse extends NetworkCourse {
+public class BigDataCourse implements NetworkCourse {
 
     private boolean needHomeworkFlag = false;
 
     @Override
-    protected boolean needHomework() {
+    public boolean needHomework() {
         return this.needHomeworkFlag;
     }
 
@@ -14,7 +14,7 @@ public class BigDataCourse extends NetworkCourse {
     }
 
     @Override
-    void checkHomework() {
+    public void checkHomework() {
         System.out.println("检查大数据课后作业");
     }
 }
