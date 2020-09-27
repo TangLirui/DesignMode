@@ -8,15 +8,17 @@ import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.util.List;
 
-public class MemberDao extends JdbcTemplate {
+public class MemberDao {
+
+    private DataSource dataSource;
 
     public MemberDao(DataSource dataSource) {
-        super(dataSource);
+        this.dataSource = dataSource;
     }
 
     public List<?> selectAll() {
         String sql = "select * from t_member";
-        return super.executeQuery(sql, new RowMapper<Object>() {
+        return new JdbcTemplate(dataSource).executeQuery(sql, new RowMapper<Object>() {
             @Override
             public Object mapRow(ResultSet rs, int rowNum) throws Exception {
                 Member member = new Member();
